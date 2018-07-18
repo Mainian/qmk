@@ -17,7 +17,7 @@ enum jc65_keycodes {
 #define _______ KC_TRNS
 #define XXXXXXX KC_NO
 
-static uint8_t current_layer;
+// static uint8_t current_layer;
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* _BL: Base Layer, mostly standard 65% QWERTY layout.-------------7-[ ]
@@ -56,8 +56,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     */
     [_FL] = KEYMAP(
         KC_GRV,    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  XXXXXXX, _______, KC_VOLU,
-        KC_CAPS,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PSCR, KC_SLCK, KC_PAUS, XXXXXXX, XXXXXXX, XXXXXXX, KC_VOLD,
-        _______,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, XXXXXXX, _______,          KC_PGUP,
+        KC_CAPS,          XXXXXXX, KC_MUTE, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PSCR, KC_SLCK, KC_PAUS, XXXXXXX, XXXXXXX, XXXXXXX, KC_VOLD,
+        _______,          KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, XXXXXXX, _______,          KC_PGUP,
         _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MO(_AL), XXXXXXX, XXXXXXX, MO(_NL),          _______, KC_MUTE, KC_PGDN,
         _______, _______,          _______, KC_SPC,             XXXXXXX,             KC_SPC,             _______, _______, _______, KC_MPRV, KC_MPLY, KC_MNXT
     ),
@@ -127,57 +127,57 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 };
 
-void matrix_init_user(void) {
-    #ifdef BACKLIGHT_ENABLE
-        backlight_level(0);
-    #endif
-    #ifdef RGBLIGHT_ENABLE
-        rgblight_mode(1);
-        rgblight_sethsv(180,100,100);
-    #endif
-}
+// void matrix_init_user(void) {
+//     #ifdef BACKLIGHT_ENABLE
+//         backlight_level(0);
+//     #endif
+//     #ifdef RGBLIGHT_ENABLE
+//         rgblight_mode(1);
+//         rgblight_sethsv(180,100,100);
+//     #endif
+// }
 
-// Runs constantly in the background, in a loop.
-void matrix_scan_user(void) {
-    uint8_t layer = biton32(layer_state);
+// // Runs constantly in the background, in a loop.
+// void matrix_scan_user(void) {
+//     uint8_t layer = biton32(layer_state);
 
-    if (current_layer == layer) {
-    }
-    else {
-        current_layer = layer;
-        switch (layer) {
-            case 0:
-                backlight_level(0);
-                rgblight_sethsv(180,100,255);
-                break;
-            case 1:
-                backlight_level(1);
-                rgblight_sethsv(180,95,240);
-                break;
-            case 2:
-                backlight_level(1);
-                rgblight_sethsv(180,90,225);
-                break;
-            case 3:
-                backlight_level(1);
-                rgblight_sethsv(180,85,210);
-                break;
-            case 4:
-                backlight_level(1);
-                rgblight_sethsv(180,80,195);
-                break;
-            case 5:
-                backlight_level(2);
-                rgblight_sethsv(230,255,255);
-                break;
-            case 6:
-                backlight_level(3);
-                rgblight_sethsv(350,255,255);
-                break;
-            default:
-                backlight_level(0);
-                rgblight_sethsv(180,100,100);
-                break;
-        }
-    }
-}
+//     if (current_layer == layer) {
+//     }
+//     else {
+//         current_layer = layer;
+//         switch (layer) {
+//             case 0:
+//                 backlight_level(0);
+//                 rgblight_sethsv(180,100,255);
+//                 break;
+//             case 1:
+//                 backlight_level(1);
+//                 rgblight_sethsv(180,95,240);
+//                 break;
+//             case 2:
+//                 backlight_level(1);
+//                 rgblight_sethsv(180,90,225);
+//                 break;
+//             case 3:
+//                 backlight_level(1);
+//                 rgblight_sethsv(180,85,210);
+//                 break;
+//             case 4:
+//                 backlight_level(1);
+//                 rgblight_sethsv(180,80,195);
+//                 break;
+//             case 5:
+//                 backlight_level(2);
+//                 rgblight_sethsv(230,255,255);
+//                 break;
+//             case 6:
+//                 backlight_level(3);
+//                 rgblight_sethsv(350,255,255);
+//                 break;
+//             default:
+//                 backlight_level(0);
+//                 rgblight_sethsv(180,100,100);
+//                 break;
+//         }
+//     }
+// }
